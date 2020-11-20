@@ -15,12 +15,10 @@
         }
     }
    ```
-4. Save the file as ```HelloWorld.sol``` into ```module01/contracts``` folder
+4. Save the file as ```HelloWorld.sol``` into ```module01/contracts``` folder  
+    Note: you should not change you working dir and stay in ```solidity-course/module01``` folder
 5. Compile  
     ```truffle compile```
-    
-    Note: you run truffle from inside ```solidity-course/module01``` folder
-    
 6. Run  
     ```./test.sh```  
 

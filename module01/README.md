@@ -29,6 +29,8 @@
     Note: you may need to add ```x``` permission for ```test.sh``` script to run:  
     ```chmod +x test.sh```
 
+    Notice ```testrpc.log``` file appears. It ganache-cli log.
+
     Notice your first smart contract output:  
     ```
      Contract: HelloWorld

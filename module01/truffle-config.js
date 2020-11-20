@@ -1,5 +1,5 @@
 // npm install @truffle/hdwallet-provider
-const HDWalletProvider = require("@truffle/hdwallet-provider");
+// const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 // babel imports is required to allow ECMAScript 6 imports in tests
 // require('babel-register');

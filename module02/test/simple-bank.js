@@ -29,14 +29,52 @@ contract("SimpleBank.sol", (accounts) => {
 		// open account 1 – for accounts[1]
 		await bank.open({from: accounts[1]});
 
-		// deposit 1 wei into account 1
-		await bank.deposit({from: accounts[1], value: 1});
+		// deposit some wei into account 1
+		const value = Math.round(Math.random() * 100);
+		await bank.deposit({from: accounts[1], value: value});
 
-		// verify 1 wei deposited successfully
-		assert.equal(1, await bank.balance({from: accounts[1]}), "bank account balance is not 1 wei after depositing 1 wei");
+		// verify some wei deposited successfully
+		assert.equal(value, await bank.balance(
+			{from: accounts[1]}),
+			"bank account balance is not " + value + " wei after depositing " + value + " wei"
+		);
+
+		// TODO: verify smart contract ETH balance increased
+		// TODO: verify account 1 ETH balance decreased
 
 		// verify it is impossible to deposit zero value
 		await expectThrow(bank.deposit({from: accounts[1]}), "able to deposit zero value");
+	});
+
+	it("transfer", async() => {
+		// deploy SimpleBank smart contract into network
+		const bank = await SimpleBankContract.new();
+
+		// open account 1 – for accounts[1]
+		await bank.open({from: accounts[1]});
+
+		// deposit some wei into account 1
+		const value = Math.round(Math.random() * 100);
+		await bank.deposit({from: accounts[1], value: value});
+
+		// verify it is impossible to transfer into non-existent account
+		await expectThrow(bank.transfer(accounts[2], {from: accounts[1]}), "able to transfer to non-existent account");
+
+		// open account 2 – for accounts[2]
+		await bank.open({from: accounts[2]});
+
+		// verify it is impossible to transfer from zero balance account
+		await expectThrow(bank.transfer(accounts[1], {from: accounts[2]}), "able to transfer from an empty account");
+
+		// transfer from account 1 to account 2
+		await bank.transfer(accounts[2], {from: accounts[1]});
+
+		// verify value was transferred correctly
+		assert.equal(0, await bank.balance({from: accounts[1]}), "non-zero account balance after transferring from it");
+		assert.equal(value, await bank.balance({from: accounts[2]}), "incorrect account balance after transferring " + value + " wei into it");
+
+		// TODO: verify smart contract ETH balance didn't change
+		// TODO: verify account 1 and 2 ETH balances didn't change
 	});
 });
 

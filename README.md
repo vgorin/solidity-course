@@ -1,6 +1,3 @@
-
-
-
 # Yet Another Solidity Course
 by Basil Gorin
 
@@ -56,4 +53,3 @@ Before you begin, do not forget to update your apt repository
 [Module 1. Hello World!](module01/README.md)  
 Taste your first Solidity application!  
 Time required: **5 minutes**
-ssdfbvsdbv

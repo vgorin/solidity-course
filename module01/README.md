@@ -1,5 +1,10 @@
 # Module 1. Hello World!
 
+You will write your first smart contract, containing single [pure function](https://en.wikipedia.org/wiki/Pure_function) ```sayHello()```.
+
+Under the hood your smart contract will be compiled (step 5),
+deployed into test Ethereum node ([Ganache](https://www.trufflesuite.com/ganache)), and communicated with (step 6).
+
 1. Navigate into course repository, module 1  
     ```cd solidity-course/module01```
 2. Install module 1 dependencies  
@@ -43,3 +48,5 @@
 
 7. Modify the contents of the return statement in ```HelloWorld.sol``` and repeat step 6.
 Notice the changes in the output.
+
+In the next module we will create a simple bank smart contract.

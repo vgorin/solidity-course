@@ -32,7 +32,8 @@ Before you begin, do not forget to update your apt repository
 3. Install nodejs  
     ```sudo apt install nodejs && sudo apt install npm ```
 4. Add path to the nvm  
-    ``` export NVM_DIR="$HOME/.nvm"
+    ```
+    export NVM_DIR="$HOME/.nvm"
     # This loads nvm
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     #This loads nvm bash_completion

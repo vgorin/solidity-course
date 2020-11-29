@@ -30,14 +30,14 @@ contract("SimpleBank.sol", (accounts) => {
 		// verify it is impossible to deposit into non-existing account
 		await expectThrow(
 			bank.deposit({from: accounts[1], value: 1}),
-			"able to deposit 1 wei into non-existent account"
+			"able to deposit 1 wei into non-existent bank account"
 		);
 
 		// open account 1 – for accounts[1]
 		await bank.open({from: accounts[1]});
 
 		// deposit some wei into account 1
-		const value = Math.round(Math.random() * 100);
+		const value = Math.round(1 + Math.random() * 100);
 		await bank.deposit({from: accounts[1], value: value});
 
 		// verify some wei deposited successfully
@@ -62,7 +62,7 @@ contract("SimpleBank.sol", (accounts) => {
 		await bank.open({from: accounts[1]});
 
 		// deposit some wei into account 1
-		const value = Math.round(Math.random() * 100);
+		const value = Math.round(1 + Math.random() * 100);
 		await bank.deposit({from: accounts[1], value: value});
 
 		// verify it is impossible to transfer into non-existent account
@@ -77,18 +77,18 @@ contract("SimpleBank.sol", (accounts) => {
 		// verify it is impossible to transfer from zero balance account
 		await expectThrow(
 			bank.transfer(accounts[1], {from: accounts[2]}),
-			"able to transfer from an empty or non-existent account"
+			"able to transfer from an empty or non-existent bank account"
 		);
 
 		// transfer from account 1 to account 2
 		await bank.transfer(accounts[2], {from: accounts[1]});
 
 		// verify value was transferred correctly
-		assert.equal(0, await bank.balance({from: accounts[1]}), "non-zero account balance after transferring from it");
+		assert.equal(0, await bank.balance({from: accounts[1]}), "non-zero bank account balance after transferring from it");
 		assert.equal(
 			value,
 			await bank.balance({from: accounts[2]}),
-			"incorrect account balance after transferring " + value + " wei into it"
+			"incorrect bank account balance after transferring " + value + " wei into it"
 		);
 
 		// TODO: verify smart contract ETH balance didn't change
@@ -105,11 +105,11 @@ contract("SimpleBank.sol", (accounts) => {
 		// verify it is impossible to withdraw from an empty account
 		await expectThrow(
 			bank.withdraw({from: accounts[1]}),
-			"able to withdraw from an empty or non-existent account"
+			"able to withdraw from an empty or non-existent bank account"
 		);
 
 		// deposit some wei into account 1
-		const value = Math.round(Math.random() * 100);
+		const value = Math.round(1 + Math.random() * 100);
 		await bank.deposit({from: accounts[1], value: value});
 
 		// withdraw from an account 1
@@ -118,6 +118,33 @@ contract("SimpleBank.sol", (accounts) => {
 		// TODO: verify smart contract ETH balance decreased
 		// TODO: verify account 1 ETH balance increased
 	});
+
+	it("close", async() => {
+		// deploy SimpleBank smart contract into network
+		const bank = await SimpleBankContract.new();
+
+		// verify it is impossible to close non-existent account
+		await expectThrow(bank.close({from: accounts[1]}), "able to close non-existent bank account");
+
+		// open account 1 – for accounts[1]
+		await bank.open({from: accounts[1]});
+
+		// close account 1
+		await bank.close({from: accounts[1]});
+
+		// verify account 1 is closed
+		assert(!await bank.exists({from: accounts[1]}), "bank account still exists after closing it");
+
+		// open account 1 again
+		await bank.open({from: accounts[1]});
+
+		// deposit some value into account 1
+		const value = Math.round(1 + Math.random() * 100);
+		await bank.deposit({from: accounts[1], value: value});
+
+		// verify it impossible to close non-empty account
+		await expectThrow(bank.close({from: accounts[1]}), "able to close non-empty bank account");
+	})
 });
 
 

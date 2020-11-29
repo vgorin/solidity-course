@@ -60,5 +60,5 @@ deployed into test Ethereum node ([Ganache](https://www.trufflesuite.com/ganache
 Notice the changes in the output.
 
 In the [next module](../module02/README.md) we will create a simple bank smart contract.
-Please read [Introduction to Smart Contracts](https://docs.soliditylang.org/en/v0.7.4/introduction-to-smart-contracts.html)
+Please read [Introduction to Smart Contracts](https://docs.soliditylang.org/en/v0.7.5/introduction-to-smart-contracts.html)
 section of the [Solidity 0.7.5 Documentation](https://docs.soliditylang.org/en/v0.7.5/index.html) before proceeding.

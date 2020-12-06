@@ -1,6 +1,27 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.7.5;
 
+/**
+ * @title Simple Bank
+ *
+ * @notice Simple Bank emulates basic banking operations, such as:
+ *      - opening a bank account
+ *      - depositing ether into the bank account
+ *      - transferring ether between accounts withing a bank
+ *      - withdrawing ether from the bank account
+ *      - closing an account
+ * @notice Additionally to the "write" operations above, it provides "read" functions, such as:
+ *      - checking if bank account exists
+ *      - checking bank account balance
+ *
+ * @dev For simplicity,
+ *      - only one bank account per user allowed,
+ *      - transfer/withdraw functions transfers/withdraws all the funds available on bank account,
+ *      - depositing/transferring is possible only into already existing (opened) bank account,
+ *      - closing non empty accounts is not allowed, funds must be transferred/withdrawn before closing
+ *
+ * @author Basil Gorin
+ */
 contract SimpleBank {
     /**
      * @dev Mapping to store account balances of the bank clients.

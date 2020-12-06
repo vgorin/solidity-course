@@ -48,9 +48,16 @@ Before you begin, do not forget to update your apt repository
     ```npm install -g ganache-cli```
 
 
-
-
-# Contents
+# Course Contents
 [Module 1. Hello World!](module01/README.md)  
 Taste your first Solidity application!  
 Time required: **5 minutes**
+
+[Module 2. Simple Bank](module02/README.md)  
+Create a simple bank dapp. Learn mappings and ether transfers.  
+Time required: **15 minutes**
+
+
+# References
+1. [A Definitive List of Ethereum Developer Tools](https://media.consensys.net/an-definitive-list-of-ethereum-developer-tools-2159ce865974)  
+    A guide to available tools, components, frameworks, and platforms for developing applications on Ethereum.

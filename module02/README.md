@@ -13,7 +13,7 @@ Before you begin make sure to read
 
 1. Navigate into course repository, module 2  
     `cd solidity-course/module02`
-2. Install module 1 dependencies  
+2. Install module 2 dependencies  
     `npm install`
 
     Notice: `node_modules` folder appears. It contains module 2 npm dependencies.

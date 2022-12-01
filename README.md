@@ -59,5 +59,5 @@ Time required: **15 minutes**
 
 
 # References
-1. [A Definitive List of Ethereum Developer Tools](https://media.consensys.net/an-definitive-list-of-ethereum-developer-tools-2159ce865974)  
+1. [A Definitive List of Ethereum Developer Tools](https://github.com/ConsenSys/ethereum-developer-tools-list)  
     A guide to available tools, components, frameworks, and platforms for developing applications on Ethereum.
